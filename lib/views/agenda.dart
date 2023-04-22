@@ -4,8 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../components/menu_lateral.dart';
 
-class ListaTarefas extends StatelessWidget {
-  const ListaTarefas({super.key});
+class Agenda extends StatelessWidget {
+  const Agenda({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ListaTarefas extends StatelessWidget {
         ),
         drawer: const MenuLateral(),
         body: const Center(
-          child: Text('Lista de Tarefas')
+          child: Text('Agenda')
         ),
       ),
     );
