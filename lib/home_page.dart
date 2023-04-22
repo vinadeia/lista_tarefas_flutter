@@ -56,21 +56,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home Page"),
-      ),
-      drawer: const MenuLateral(),
-      body: Center(
-        child: Text('teste $counter')
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-        }
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          // title: const Text(""),
+        ),
+        drawer: const MenuLateral(),
+        body: const Center(
+          child: Text('Dashboard')
+        ),
       ),
     );
   }
