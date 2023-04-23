@@ -1,11 +1,7 @@
-import 'package:app_test_flutter/views/agenda.dart';
 import 'package:app_test_flutter/views/dashboard.dart';
-import 'package:app_test_flutter/views/graficos.dart';
-import 'package:app_test_flutter/views/lista_tarefas.dart';
 import 'package:flutter/material.dart';
 
-import 'home_controller.dart';
-import 'home_page.dart';
+import 'login/view/login_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +14,8 @@ class MyApp extends StatelessWidget {
       theme: temaLight(),
       darkTheme: temaDark(),
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      // home: const Dashboard(),
+      home: const LoginPage(),
     );
   }
 
