@@ -36,7 +36,7 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Dashboard(),
+                builder: (context) => const Dashboard(),
               )
             )
           ),

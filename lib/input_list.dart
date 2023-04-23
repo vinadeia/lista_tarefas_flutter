@@ -40,7 +40,7 @@ class _InputListState extends State<InputList> {
                 ),
                 IconButton(
                   onPressed: (){
-                    print(list);
+                    debugPrint(list.toString());
                     final text = controller.text;
                     setState(() {
                       list.add(text);
