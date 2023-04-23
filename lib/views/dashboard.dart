@@ -43,10 +43,9 @@ class _DashboardState extends State<Dashboard> {
                         children: [
                           Text('Tarefas',
                             style: GoogleFonts.poppins(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              fontWeight: FontWeight.w700,
-                              fontSize: 25,
-                            )
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25
+                            ),
                           ),
                           Center(
                             child: Wrap(
@@ -118,27 +117,31 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     Expanded(
                       flex: 6,
-                      child: GridView.count(
-                        crossAxisCount: 7,
-                        children: [
-                          DataTable(
-                            columns: const [
-                              DataColumn(label: Text('Prioridade')),
-                              DataColumn(label: Text('Nome')),
-                              DataColumn(label: Text('Descrição')),
-                              DataColumn(label: Text('Responsável')),
-                              DataColumn(label: Text('Status')),
-                            ],
-                            rows: model.listaTarefas.map((e) => 
-                              DataRow(cells: <DataCell>[
-                                DataCell(Text(e.prioridade.toString())),
-                                DataCell(Text(e.nome.toString())),
-                                DataCell(Text(e.descricao.toString())),
-                                DataCell(Text(e.responsavel.toString())),
-                                DataCell(Text(e.status.toString())),
-                              ])).toList()
-                          )
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          children: [
+                            DataTable(
+                              columns: const [
+                                DataColumn(label: Text('Prioridade')),
+                                DataColumn(label: Text('Nome')),
+                                DataColumn(label: Text('Descrição')),
+                                DataColumn(label: Text('Responsável')),
+                                DataColumn(label: Text('Status')),
+                              ],
+                              rows: model.listaTarefas.map((e) => 
+                                DataRow(cells: <DataCell>[
+                                  DataCell(Text(e.prioridade.toString())),
+                                  DataCell(Text(e.nome.toString())),
+                                  DataCell(Text(e.descricao.toString())),
+                                  DataCell(Text(e.responsavel.toString())),
+                                  DataCell(Text(e.status.toString())),
+                                ])).toList()
+                            )
+                          ],
+                        ),
                       )
                     )
                   ],
