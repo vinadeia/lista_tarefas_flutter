@@ -49,7 +49,7 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const ListaTarefas(),
+                builder: (context) => ListaTarefas(),
               )
             )
           ),

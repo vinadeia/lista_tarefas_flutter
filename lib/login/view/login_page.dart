@@ -27,7 +27,8 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Opacity(
               opacity: 0.8,
-              child: Image.asset('image_login.jpg',
+              child: Image(
+                image: const AssetImage('assets/image_login.jpg'),
                 width: MediaQuery.of(context).size.width,
               ),
             ),

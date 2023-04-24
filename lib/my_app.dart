@@ -1,5 +1,7 @@
+import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'login/view/login_page.dart';
 
@@ -9,13 +11,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // home: InputList(),
-      theme: temaLight(),
-      darkTheme: temaDark(),
-      debugShowCheckedModeBanner: false,
-      // home: const Dashboard(),
-      home: const LoginPage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ControllerGeral())
+      ],
+      child: MaterialApp(
+        // home: InputList(),
+        theme: temaLight(),
+        darkTheme: temaDark(),
+        debugShowCheckedModeBanner: false,
+        // home: const Dashboard(),
+        home: const LoginPage(),
+      ),
     );
   }
 
