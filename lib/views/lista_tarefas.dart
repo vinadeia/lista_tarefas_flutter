@@ -1,4 +1,5 @@
 import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../components/menu_lateral.dart';
@@ -22,7 +23,24 @@ class ListaTarefas extends StatelessWidget {
         ),
         drawer: const MenuLateral(),
         body: Center(
-          child: Text(mensagem)
+          child: Column(
+            children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('CIDADE: ${globalEstacaoModel?.name}'),
+                      Text('TEMPERATURA MÁXIMA: ${globalEstacaoModel?.main?.tempMax}'),
+                      Text('TEMPERATURA MÍNIMA: ${globalEstacaoModel?.main?.tempMin}'),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          )
         ),
       ),
     );
