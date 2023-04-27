@@ -15,7 +15,7 @@ class ModelTarefa {
   });
 }
 
-class ListaTarefas {
+class ListaTarefasModel {
   List<ModelTarefa> listaTarefas = [
     ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
     ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),

@@ -13,8 +13,7 @@ class ControllerGeral extends ChangeNotifier {
   final ClientHttp requisicao = ClientHttp();
 
   ControllerGeral(){
-    getPosicao();
-
+     getPosicao();
   }
 
   getPosicao() async {
@@ -39,6 +38,7 @@ class ControllerGeral extends ChangeNotifier {
       var dados = await requisicao.get('https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=c4e512796a173002be11c691405d4df9', data);
 
       globalEstacaoModel = ModelEstacaoMeteorologica.converterJSON(dados);
+      alteraCondicaoTempo(globalEstacaoModel?.weather?[0].main);
     } catch (e) {
       error = e.toString();
     }
@@ -46,7 +46,7 @@ class ControllerGeral extends ChangeNotifier {
     notifyListeners();
   }
 
-    Future<Position> _determinePosition() async {
+  Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -94,17 +94,17 @@ class ControllerGeral extends ChangeNotifier {
     return await Geolocator.getCurrentPosition();
   }
 
-  alteraCondicaoTempo(condicao){print(condicao);
+  alteraCondicaoTempo(condicao){
     switch (condicao) {
       case "Clear": 
         condicaoTempo = 'Ensolarado';
         imageTempo = 'assets/ensolarado.png';
         break;
-      case "rainy": 
+      case "Rainy": 
         condicaoTempo = 'Chuvoso';
         imageTempo = 'assets/chuvoso.png';
         break;
-      case "nublado": 
+      case "Clouds": 
         condicaoTempo = 'Sol entre nuvens';
         imageTempo = 'assets/sol_entre_nuvens.png';
         break;

@@ -1,7 +1,5 @@
 import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller_geral/controller_geral.dart';
@@ -36,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: MediaQuery.of(context).size.width,
               ),
             ),
+            Text(controller.lat.toString()),
             Padding(
               padding: const EdgeInsets.only(right: 30, left: 30),
                 child: Form(

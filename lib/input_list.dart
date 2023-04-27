@@ -55,7 +55,6 @@ class _InputListState extends State<InputList> {
               itemCount: list.length,
               itemBuilder: (context, index) {
                 final item = list[index];
-          
                 return ListTile(
                   title: Text(item),
                 );
