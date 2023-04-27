@@ -1,16 +1,16 @@
 import 'package:app_test_flutter/core/client_http.dart';
 import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:geolocator/geolocator.dart';
 
 class ControllerGeral extends ChangeNotifier {
   double lat = 0.0;
   double long = 0.0;
   String error = '';
+
+  String condicaoTempo ='';
+  String imageTempo = 'assets/ensolarado.png';
   final ClientHttp requisicao = ClientHttp();
-  // String apiPrevisao = 'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=c4e512796a173002be11c691405d4df9';
 
   ControllerGeral(){
     getPosicao();
@@ -50,12 +50,8 @@ class ControllerGeral extends ChangeNotifier {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the 
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
@@ -63,23 +59,15 @@ class ControllerGeral extends ChangeNotifier {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale 
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
         return Future.error('Location permissions are denied');
       }
     }
     
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately. 
       return Future.error(
         'Location permissions are permanently denied, we cannot request permissions.');
     } 
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
   }
 
@@ -104,6 +92,25 @@ class ControllerGeral extends ChangeNotifier {
     }
 
     return await Geolocator.getCurrentPosition();
+  }
+
+  alteraCondicaoTempo(condicao){print(condicao);
+    switch (condicao) {
+      case "Clear": 
+        condicaoTempo = 'Ensolarado';
+        imageTempo = 'assets/ensolarado.png';
+        break;
+      case "rainy": 
+        condicaoTempo = 'Chuvoso';
+        imageTempo = 'assets/chuvoso.png';
+        break;
+      case "nublado": 
+        condicaoTempo = 'Sol entre nuvens';
+        imageTempo = 'assets/sol_entre_nuvens.png';
+        break;
+      default:
+    }
+    notifyListeners();
   }
 
 }

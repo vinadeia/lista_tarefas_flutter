@@ -2,6 +2,9 @@ import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:provider/provider.dart';
+
+import '../../controller_geral/controller_geral.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -21,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.watch<ControllerGeral>();
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -34,24 +38,24 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 30, left: 30),
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            label: Text('Usuário')
-                          ),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          label: Text('Usuário')
                         ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            label: Text('Senha')
-                          ),
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          label: Text('Senha')
                         ),
-                      ],
-                    )
-                  ),
+                      ),
+                    ],
+                  )
                 ),
+              ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20, top: 30),
                   child: ElevatedButton(
