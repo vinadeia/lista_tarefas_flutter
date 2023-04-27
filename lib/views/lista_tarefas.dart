@@ -2,6 +2,7 @@ import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../components/card_prev_temp.dart';
 import '../components/menu_lateral.dart';
 
 class ListaTarefas extends StatelessWidget {
@@ -31,10 +32,8 @@ class ListaTarefas extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('CIDADE: ${globalEstacaoModel?.name}'),
-                      Text('TEMPERATURA MÁXIMA: ${globalEstacaoModel?.main?.tempMax}'),
-                      Text('TEMPERATURA MÍNIMA: ${globalEstacaoModel?.main?.tempMin}'),
+                    children: const [
+                      CardPrevTemp()
                     ],
                   ),
                 ),

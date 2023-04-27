@@ -3,5 +3,5 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'my_app.dart';
 
 void main() {
-  initializeDateFormatting().then((_) => runApp(const MyApp()));
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
