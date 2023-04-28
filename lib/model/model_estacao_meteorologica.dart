@@ -33,7 +33,8 @@ class ModelEstacaoMeteorologica {
 
   
   factory ModelEstacaoMeteorologica.converterJSON(Map<String, dynamic> json) {
-    List<Weather> weather = [];
+    final List<Weather>listWather = [];
+    json["weather"].forEach((v) => listWather.add(Weather.fromJson(v)));
     return ModelEstacaoMeteorologica(
       coord: json['coord'] != null ? Coord.fromJson(json['coord']) : null,
       base: json['base'],
@@ -47,7 +48,7 @@ class ModelEstacaoMeteorologica {
       id: json['id'],
       name: json['name'],
       cod:  json['cod'],
-      weather: json['weather'] != null ? json['weather']!.forEach((v) => weather.add(Weather.fromJson(v as Map<String, dynamic>))) : null
+      weather: listWather
     );
   }
 

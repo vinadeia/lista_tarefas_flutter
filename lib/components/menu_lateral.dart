@@ -1,7 +1,7 @@
 import 'package:app_test_flutter/agenda/view/agenda.dart';
-import 'package:app_test_flutter/views/dashboard.dart';
-import 'package:app_test_flutter/views/graficos.dart';
 import 'package:app_test_flutter/views/lista_tarefas.dart';
+import 'package:app_test_flutter/views/graficos.dart';
+import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class MenuLateral extends StatelessWidget {

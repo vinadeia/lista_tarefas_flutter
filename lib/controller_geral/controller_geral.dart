@@ -3,6 +3,8 @@ import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../components/model_tarefa.dart';
+
 class ControllerGeral extends ChangeNotifier {
   double lat = 0.0;
   double long = 0.0;
@@ -12,9 +14,12 @@ class ControllerGeral extends ChangeNotifier {
   String imageTempo = 'assets/ensolarado.png';
   final ClientHttp requisicao = ClientHttp();
 
-  ControllerGeral(){
-    getPosicao();
+  
+  final modelListaTarefas = ListaTarefasModel();
+  List<ModelTarefa> teste = [];
 
+  ControllerGeral(){
+     getPosicao();
   }
 
   getPosicao() async {
@@ -39,6 +44,7 @@ class ControllerGeral extends ChangeNotifier {
       var dados = await requisicao.get('https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=c4e512796a173002be11c691405d4df9', data);
 
       globalEstacaoModel = ModelEstacaoMeteorologica.converterJSON(dados);
+      alteraCondicaoTempo(globalEstacaoModel?.weather?[0].main);
     } catch (e) {
       error = e.toString();
     }
@@ -46,7 +52,7 @@ class ControllerGeral extends ChangeNotifier {
     notifyListeners();
   }
 
-    Future<Position> _determinePosition() async {
+  Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -94,22 +100,32 @@ class ControllerGeral extends ChangeNotifier {
     return await Geolocator.getCurrentPosition();
   }
 
-  alteraCondicaoTempo(condicao){print(condicao);
+  alteraCondicaoTempo(condicao){
     switch (condicao) {
       case "Clear": 
         condicaoTempo = 'Ensolarado';
         imageTempo = 'assets/ensolarado.png';
         break;
-      case "rainy": 
+      case "Rainy": 
         condicaoTempo = 'Chuvoso';
         imageTempo = 'assets/chuvoso.png';
         break;
-      case "nublado": 
+      case "Clouds": 
         condicaoTempo = 'Sol entre nuvens';
         imageTempo = 'assets/sol_entre_nuvens.png';
         break;
       default:
     }
+    notifyListeners();
+  }
+  // LISTA TAREFAS
+  
+  addTask(){
+    modelListaTarefas.listaTarefas.map((e) => 
+      teste.add(
+        ModelTarefa(prioridade: e.prioridade, descricao: e.descricao, nome: e.nome, responsavel: e.responsavel, status: e.status),
+      )
+    );
     notifyListeners();
   }
 

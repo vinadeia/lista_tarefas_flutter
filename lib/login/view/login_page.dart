@@ -1,7 +1,5 @@
 import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller_geral/controller_geral.dart';
@@ -14,12 +12,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final formKey = GlobalKey<FormState>();
-  final usuario = TextEditingController();
-  final senha = TextEditingController();
-  FocusNode nodeUsuario = FocusNode();
-  FocusNode nodeSenha = FocusNode();
-  Map<String, dynamic> mapa = {};
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController usuarioController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+  // final FocusNode nodeUsuario = FocusNode();
+  // final FocusNode nodeSenha = FocusNode();
+  // Map<String, dynamic> mapa = {};
   
 
   @override
@@ -36,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: MediaQuery.of(context).size.width,
               ),
             ),
+            Text(controller.lat.toString()),
             Padding(
               padding: const EdgeInsets.only(right: 30, left: 30),
                 child: Form(
@@ -43,11 +42,14 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: usuarioController,
                         decoration: const InputDecoration(
                           label: Text('Usuário')
                         ),
+                        // onFieldSubmitted: (){},
                       ),
                       TextFormField(
+                        controller: senhaController,
                         decoration: const InputDecoration(
                           label: Text('Senha')
                         ),

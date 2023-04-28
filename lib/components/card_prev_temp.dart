@@ -17,9 +17,9 @@ class CardPrevTemp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<ControllerGeral>();
-    if(globalEstacaoModel != null){
-      controller.alteraCondicaoTempo(globalEstacaoModel?.weather?[0].main);
-    }
+    // if(globalEstacaoModel != null){
+    //   controller.alteraCondicaoTempo(globalEstacaoModel?.weather?[0].main);
+    // }
     return Container(
           color: Colors.white,
           child: Column(
