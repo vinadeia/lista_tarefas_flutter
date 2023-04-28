@@ -12,12 +12,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final formKey = GlobalKey<FormState>();
-  final usuario = TextEditingController();
-  final senha = TextEditingController();
-  FocusNode nodeUsuario = FocusNode();
-  FocusNode nodeSenha = FocusNode();
-  Map<String, dynamic> mapa = {};
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController usuarioController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+  // final FocusNode nodeUsuario = FocusNode();
+  // final FocusNode nodeSenha = FocusNode();
+  // Map<String, dynamic> mapa = {};
   
 
   @override
@@ -42,11 +42,14 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: usuarioController,
                         decoration: const InputDecoration(
                           label: Text('Usuário')
                         ),
+                        // onFieldSubmitted: (){},
                       ),
                       TextFormField(
+                        controller: senhaController,
                         decoration: const InputDecoration(
                           label: Text('Senha')
                         ),

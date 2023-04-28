@@ -3,6 +3,8 @@ import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../components/model_tarefa.dart';
+
 class ControllerGeral extends ChangeNotifier {
   double lat = 0.0;
   double long = 0.0;
@@ -11,6 +13,10 @@ class ControllerGeral extends ChangeNotifier {
   String condicaoTempo ='';
   String imageTempo = 'assets/ensolarado.png';
   final ClientHttp requisicao = ClientHttp();
+
+  
+  final modelListaTarefas = ListaTarefasModel();
+  List<ModelTarefa> teste = [];
 
   ControllerGeral(){
      getPosicao();
@@ -110,6 +116,16 @@ class ControllerGeral extends ChangeNotifier {
         break;
       default:
     }
+    notifyListeners();
+  }
+  // LISTA TAREFAS
+  
+  addTask(){
+    modelListaTarefas.listaTarefas.map((e) => 
+      teste.add(
+        ModelTarefa(prioridade: e.prioridade, descricao: e.descricao, nome: e.nome, responsavel: e.responsavel, status: e.status),
+      )
+    );
     notifyListeners();
   }
 

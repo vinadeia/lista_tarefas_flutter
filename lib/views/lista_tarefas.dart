@@ -1,5 +1,7 @@
+import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../components/menu_lateral.dart';
 import '../components/model_tarefa.dart';
@@ -13,14 +15,12 @@ class ListaTarefas extends StatefulWidget {
 
 class _ListaTarefasState extends State<ListaTarefas> {
 
-  final model = ListaTarefasModel();
-
-  @override
-  void initState() {
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
+    final controller = context.watch<ControllerGeral>();
+    if(controller.teste == []){
+      controller.addTask();
+    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -100,7 +100,11 @@ class _ListaTarefasState extends State<ListaTarefas> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ElevatedButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  setState(() {
+                                    controller.teste.addAll([ModelTarefa(prioridade: 9, descricao: 'teste', nome: 'teste',responsavel: 'ADRIANA', status: 'FECHADO')]);
+                                  });
+                                },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,7 +135,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                 DataColumn(label: Text('Responsável')),
                                 DataColumn(label: Text('Status')),
                               ],
-                              rows: model.listaTarefas.map((e) => 
+                              rows: controller.teste.map((e) => 
                                 DataRow(cells: <DataCell>[
                                   DataCell(Text(e.prioridade.toString())),
                                   DataCell(Text(e.nome.toString())),
