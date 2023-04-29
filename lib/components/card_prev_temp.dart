@@ -11,9 +11,21 @@ import 'package:provider/provider.dart';
 
 import '../model/model_estacao_meteorologica.dart';
 
-class CardPrevTemp extends StatelessWidget {
+class CardPrevTemp extends StatefulWidget {
   const CardPrevTemp({super.key});
 
+  @override
+  State<CardPrevTemp> createState() => _CardPrevTempState();
+}
+
+class _CardPrevTempState extends State<CardPrevTemp> {
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<ControllerGeral>();
@@ -44,7 +56,7 @@ class CardPrevTemp extends StatelessWidget {
                   height: 100,
                 ),
                 Center(
-                  child: Text('Ensolarado',
+                  child: Text(controller.condicaoTempo,
                     style: GoogleFonts.nunito(
                       color: const Color.fromRGBO(0, 0, 0, 1),
                       fontWeight: FontWeight.w800,
@@ -55,7 +67,7 @@ class CardPrevTemp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('${globalEstacaoModel?.main?.tempMin}°C',
+                    Text('${globalEstacaoModel?.main?.tempMin?.toStringAsFixed(0)}°C',
                       style: GoogleFonts.nunito(
                         color: const Color.fromRGBO(62, 62, 62, 1),
                         fontSize: 40,
@@ -69,7 +81,7 @@ class CardPrevTemp extends StatelessWidget {
                           fontWeight: FontWeight.w200,
                         )
                       ),
-                    Text('${globalEstacaoModel?.main?.tempMax}°C',
+                    Text('${globalEstacaoModel?.main?.tempMax?.toStringAsFixed(0)}°C',
                       style: GoogleFonts.nunito(
                         color: const Color.fromRGBO(62, 62, 62, 1),
                         fontSize: 40,

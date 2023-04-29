@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../components/menu_lateral.dart';
 import '../components/model_tarefa.dart';
+import 'formulario_add_tarefa.dart';
 
 class ListaTarefas extends StatefulWidget {
   const ListaTarefas({super.key});
@@ -14,13 +15,72 @@ class ListaTarefas extends StatefulWidget {
 }
 
 class _ListaTarefasState extends State<ListaTarefas> {
+  final TextEditingController prioridadeController = TextEditingController();
+  final TextEditingController tipoController = TextEditingController();
+  final TextEditingController descricaoController = TextEditingController();
+  final TextEditingController responsavelController = TextEditingController();
+  final TextEditingController statusController = TextEditingController();
+  List<ModelTarefa> teste = [];
+  
+  Future<bool> _onBackPressed(){
+    return showDialog(
+      context: context,
+      builder: (context) => Padding(
+        padding: const EdgeInsets.only(left: 15, right: 15),
+        child: SimpleDialog(
+          insetPadding: EdgeInsets.all(0),
+          title: const Text('Adicionar nova tarefa.'),
+          // content: const Text('Adicionar nova tarefa'),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                  child:Column(
+                    children: [
+                      FormularioAddTarefa(
+                        descricaoController: descricaoController,
+                        prioridadeController: prioridadeController,
+                        responsavelController: responsavelController,
+                        statusController: statusController,
+                        tipoController: tipoController,
+                      ),
+                      Row(
+                        children: [
+                          ElevatedButton( 
+                            onPressed: () => Navigator.of(context).pop(false), 
+                            child: const Text('Cancelar'), 
+                          ),
+                          ElevatedButton( 
+                            onPressed: () {
+                              setState(() {
+                                teste.addAll([ModelTarefa(
+                                  prioridade: prioridadeController.text,
+                                  descricao: descricaoController.text,
+                                  tipo: tipoController.text,
+                                  responsavel: responsavelController.text, 
+                                  status: statusController.text
+                                )]);
+                              });
+                              Navigator.of(context).pop(false);
+                            },
+                            child: const Text('Salvar'), 
+                          ),
+                        ],
+                      ),
+                  ]
+                )
+              ),
+            ),
+          ]
+        ),
+      )
+    ).then((value) => value ?? false);
+  }
 
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<ControllerGeral>();
-    if(controller.teste == []){
-      controller.addTask();
-    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -100,11 +160,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ElevatedButton(
-                                onPressed: (){
-                                  setState(() {
-                                    controller.teste.addAll([ModelTarefa(prioridade: 9, descricao: 'teste', nome: 'teste',responsavel: 'ADRIANA', status: 'FECHADO')]);
-                                  });
-                                },
+                                onPressed: _onBackPressed,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,15 +186,15 @@ class _ListaTarefasState extends State<ListaTarefas> {
                             DataTable(
                               columns: const [
                                 DataColumn(label: Text('Prioridade')),
-                                DataColumn(label: Text('Nome')),
+                                DataColumn(label: Text('Tipo')),
                                 DataColumn(label: Text('Descrição')),
                                 DataColumn(label: Text('Responsável')),
                                 DataColumn(label: Text('Status')),
                               ],
-                              rows: controller.teste.map((e) => 
+                              rows: teste.map((e) => 
                                 DataRow(cells: <DataCell>[
                                   DataCell(Text(e.prioridade.toString())),
-                                  DataCell(Text(e.nome.toString())),
+                                  DataCell(Text(e.tipo.toString())),
                                   DataCell(Text(e.descricao.toString())),
                                   DataCell(Text(e.responsavel.toString())),
                                   DataCell(Text(e.status.toString())),
