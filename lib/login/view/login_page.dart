@@ -34,7 +34,6 @@ class _LoginPageState extends State<LoginPage> {
                 width: MediaQuery.of(context).size.width,
               ),
             ),
-            Text(controller.lat.toString()),
             Padding(
               padding: const EdgeInsets.only(right: 30, left: 30),
                 child: Form(

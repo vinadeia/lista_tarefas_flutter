@@ -1,7 +1,7 @@
 class ModelTarefa {
-  int? prioridade;
+  String? prioridade;
   String? descricao;
-  String? nome;
+  String? tipo;
   String? responsavel;
   String? status;
 
@@ -9,25 +9,12 @@ class ModelTarefa {
   ModelTarefa({
     this.prioridade,
     this.descricao,
-    this.nome,
+    this.tipo,
     this.responsavel,
     this.status
   });
 }
 
 class ListaTarefasModel {
-  List<ModelTarefa> listaTarefas = [
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-    ModelTarefa(prioridade: 1, descricao: 'qualquer coisa', nome: 'teste tarefa',responsavel: 'Adriana', status: 'aberto'),
-  ];
+  List<ModelTarefa> listaTarefas = [];
 }

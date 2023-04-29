@@ -1,5 +1,6 @@
 import 'package:app_test_flutter/core/client_http.dart';
 import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -11,9 +12,8 @@ class ControllerGeral extends ChangeNotifier {
   String error = '';
 
   String condicaoTempo ='';
-  String imageTempo = 'assets/ensolarado.png';
+  String imageTempo = '';
   final ClientHttp requisicao = ClientHttp();
-
   
   final modelListaTarefas = ListaTarefasModel();
   List<ModelTarefa> teste = [];
@@ -105,28 +105,30 @@ class ControllerGeral extends ChangeNotifier {
       case "Clear": 
         condicaoTempo = 'Ensolarado';
         imageTempo = 'assets/ensolarado.png';
+        notifyListeners();
         break;
       case "Rainy": 
         condicaoTempo = 'Chuvoso';
         imageTempo = 'assets/chuvoso.png';
+        notifyListeners();
         break;
       case "Clouds": 
         condicaoTempo = 'Sol entre nuvens';
         imageTempo = 'assets/sol_entre_nuvens.png';
+        notifyListeners(); 
         break;
       default:
     }
-    notifyListeners();
   }
   // LISTA TAREFAS
   
-  addTask(){
-    modelListaTarefas.listaTarefas.map((e) => 
-      teste.add(
-        ModelTarefa(prioridade: e.prioridade, descricao: e.descricao, nome: e.nome, responsavel: e.responsavel, status: e.status),
-      )
-    );
-    notifyListeners();
-  }
+  // addTask(){
+  //   modelListaTarefas.listaTarefas.map((e) => 
+  //     teste.add(
+  //       ModelTarefa(prioridade: e.prioridade, descricao: e.descricao, nome: e.nome, responsavel: e.responsavel, status: e.status),
+  //     )
+  //   );
+  //   notifyListeners();
+  // }
 
 }
