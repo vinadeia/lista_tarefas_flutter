@@ -34,45 +34,167 @@ class _CardPrevTempState extends State<CardPrevTemp> {
     // }
     return Container(
           color: Colors.white,
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Center(
-                child: Text(
-                  '${DateFormat(DateFormat.WEEKDAY, 'pt_Br').format(DateTime.now())}, ${DateTime.now().day} ${DateFormat(DateFormat.ABBR_MONTH, 'pt_Br').format(DateTime.now())} ${DateTime.now().year}',
-                  style: GoogleFonts.nunito(
-                    color: const Color.fromRGBO(130, 130, 130, 1),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('${globalEstacaoModel?.name}',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(91, 91, 91, 1),
+                      fontSize: 16
+                    )
                   ),
-                ),
+                  Text(
+                    '${DateFormat(DateFormat.WEEKDAY, 'pt_Br').format(DateTime.now())}, ${DateTime.now().day} ${DateFormat(DateFormat.ABBR_MONTH, 'pt_Br').format(DateTime.now())} ${DateTime.now().year}',
+                    style: GoogleFonts.nunito(
+                      color: const Color.fromRGBO(130, 130, 130, 1),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image(
+                        image: AssetImage(controller.imageTempo),
+                        height: 90,
+                      ),
+                      Text(controller.condicaoTempo,
+                        style: GoogleFonts.nunito(
+                          color: const Color.fromRGBO(0, 0, 0, 1),
+                          fontWeight: FontWeight.w800,
+                        )
+                      ),
+                    ],
+                  ),
+                ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                Image(
-                  image: AssetImage(controller.imageTempo),
-                  height: 100,
-                ),
-                Center(
-                  child: Text(controller.condicaoTempo,
-                    style: GoogleFonts.nunito(
-                      color: const Color.fromRGBO(0, 0, 0, 1),
-                      fontWeight: FontWeight.w800,
-                    )
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image(
+                          image: AssetImage(controller.imageTempo),
+                          height: 20,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('120',
+                              style: GoogleFonts.nunito(
+                                color: const Color.fromRGBO(0, 0, 0, 1),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10
+                              )
+                            ),
+                            Text('Pressão',
+                              style: GoogleFonts.nunito(
+                                color: const Color.fromRGBO(0, 0, 0, 1),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10
+                              )
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image(
+                          image: AssetImage(controller.imageTempo),
+                          height: 20,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('120',
+                              style: GoogleFonts.nunito(
+                                color: const Color.fromRGBO(0, 0, 0, 1),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10
+                              )
+                            ),
+                            Text('Vel. Vento',
+                              style: GoogleFonts.nunito(
+                                color: const Color.fromRGBO(0, 0, 0, 1),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10
+                              )
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('${globalEstacaoModel?.main?.tempMin?.toStringAsFixed(0)}°C',
-                      style: GoogleFonts.nunito(
-                        color: const Color.fromRGBO(62, 62, 62, 1),
-                        fontSize: 40,
-                        fontWeight: FontWeight.w800,
-                      )
+                    Row(
+                      children: [
+                        Image(
+                          image: AssetImage(controller.imageTempo),
+                          height: 20,
+                        ),
+                        Text('Umidade',
+                          style: GoogleFonts.nunito(
+                            color: const Color.fromRGBO(0, 0, 0, 1),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10
+                          )
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Image(
+                          image: AssetImage(controller.imageTempo),
+                          height: 20,
+                        ),
+                        Text('Sensação térmica',
+                          style: GoogleFonts.nunito(
+                            color: const Color.fromRGBO(0, 0, 0, 1),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10
+                          )
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Text('${globalEstacaoModel?.main?.tempMin?.toStringAsFixed(0)}°C',
+                          style: GoogleFonts.nunito(
+                            color: const Color.fromRGBO(62, 62, 62, 1),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w800,
+                          )
+                        ),
+                        Text('Temp. mínima',
+                          style: GoogleFonts.nunito(
+                            color: const Color.fromRGBO(62, 62, 62, 1),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w800,
+                          )
+                        ),
+                      ],
                     ),
                     Text(' | ',
                         style: GoogleFonts.nunito(
@@ -81,13 +203,24 @@ class _CardPrevTempState extends State<CardPrevTemp> {
                           fontWeight: FontWeight.w200,
                         )
                       ),
-                    Text('${globalEstacaoModel?.main?.tempMax?.toStringAsFixed(0)}°C',
-                      style: GoogleFonts.nunito(
-                        color: const Color.fromRGBO(62, 62, 62, 1),
-                        fontSize: 40,
-                        fontWeight: FontWeight.w800,
-                      )
-                    )
+                    Column(
+                      children: [
+                        Text('${globalEstacaoModel?.main?.tempMax?.toStringAsFixed(0)}°C',
+                          style: GoogleFonts.nunito(
+                            color: const Color.fromRGBO(62, 62, 62, 1),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w800,
+                          )
+                        ),
+                        Text('Temp. máxima',
+                          style: GoogleFonts.nunito(
+                            color: const Color.fromRGBO(62, 62, 62, 1),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w800,
+                          )
+                        ),
+                      ],
+                    ),
                   ],
                 )
               ])
