@@ -21,6 +21,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
   final TextEditingController responsavelController = TextEditingController();
   final TextEditingController statusController = TextEditingController();
   List<ModelTarefa> teste = [];
+  late final LocalKey? key;
   
   Future<bool> _onBackPressed(){
     return showDialog(
@@ -46,6 +47,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                         tipoController: tipoController,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton( 
                             onPressed: () => Navigator.of(context).pop(false), 
@@ -184,21 +186,39 @@ class _ListaTarefasState extends State<ListaTarefas> {
                           shrinkWrap: true,
                           children: [
                             DataTable(
+                              // showCheckboxColumn: true,
                               columns: const [
                                 DataColumn(label: Text('Prioridade')),
                                 DataColumn(label: Text('Tipo')),
                                 DataColumn(label: Text('Descrição')),
                                 DataColumn(label: Text('Responsável')),
                                 DataColumn(label: Text('Status')),
+                                DataColumn(label: Text('Delete')),
                               ],
                               rows: teste.map((e) => 
-                                DataRow(cells: <DataCell>[
+                                DataRow(
+                                  cells: <DataCell>[
                                   DataCell(Text(e.prioridade.toString())),
                                   DataCell(Text(e.tipo.toString())),
                                   DataCell(Text(e.descricao.toString())),
                                   DataCell(Text(e.responsavel.toString())),
                                   DataCell(Text(e.status.toString())),
-                                ])).toList()
+                                  DataCell(
+                                    IconButton(
+                                      icon: Icon(Icons.delete,
+                                        color: Colors.red[200],
+                                        size: 20,
+                                      ),
+                                      onPressed: (){
+                                        
+                                      },
+                                    )
+                                  )
+                                ],      
+                                // onSelectChanged: (bool? selected) {
+                                //   selected == null ? print('selected is null') : print('select is $selected');
+                                //   },
+                                )).toList()
                             )
                           ],
                         ),

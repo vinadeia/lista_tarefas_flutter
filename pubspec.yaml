@@ -73,6 +73,10 @@ flutter:
     - assets/chuvoso.png
     - assets/tempestade.png
     - assets/sol_entre_nuvens.png
+    - assets/termometro.png
+    - assets/pressao.png
+    - assets/umidade.png
+    - assets/vento.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

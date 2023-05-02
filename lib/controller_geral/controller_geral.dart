@@ -107,9 +107,14 @@ class ControllerGeral extends ChangeNotifier {
         imageTempo = 'assets/ensolarado.png';
         notifyListeners();
         break;
-      case "Rainy": 
+      case "Drizzle": 
         condicaoTempo = 'Chuvoso';
         imageTempo = 'assets/chuvoso.png';
+        notifyListeners();
+        break;
+      case "Rain": 
+        condicaoTempo = 'Chuvoso';
+        imageTempo = 'assets/tempestade.png';
         notifyListeners();
         break;
       case "Clouds": 

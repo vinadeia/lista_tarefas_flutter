@@ -18,12 +18,6 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<ControllerGeral>();
-
-    // String mensagem = controller.error == ''
-     
-    //  ? 'Latitude: ${controller.lat} | Longitude: ${controller.long}'
-    //   : controller.error;
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
