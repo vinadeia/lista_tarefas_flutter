@@ -1,8 +1,5 @@
 import 'package:app_test_flutter/controller_geral/controller_geral.dart';
-import 'package:app_test_flutter/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +32,7 @@ class _CardPrevTempState extends State<CardPrevTemp> {
     return Container(
           color: Colors.white,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
@@ -75,31 +72,25 @@ class _CardPrevTempState extends State<CardPrevTemp> {
                 ],
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image(
-                          image: AssetImage(controller.imageTempo),
-                          height: 20,
+                        const Image(
+                          image: AssetImage('assets/termometro.png'),
+                          height: 15,
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('120',
+                            Text('${globalEstacaoModel?.main?.feelsLike?.toStringAsFixed(0)}°C',
                               style: GoogleFonts.nunito(
-                                color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10
+                                color: const Color.fromRGBO(62, 62, 62, 1),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
                               )
                             ),
-                            Text('Pressão',
+                            Text('Sensação térmica',
                               style: GoogleFonts.nunito(
                                 color: const Color.fromRGBO(0, 0, 0, 1),
                                 fontWeight: FontWeight.w600,
@@ -110,73 +101,79 @@ class _CardPrevTempState extends State<CardPrevTemp> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image(
-                          image: AssetImage(controller.imageTempo),
-                          height: 20,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('120',
-                              style: GoogleFonts.nunito(
-                                color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10
-                              )
-                            ),
-                            Text('Vel. Vento',
-                              style: GoogleFonts.nunito(
-                                color: const Color.fromRGBO(0, 0, 0, 1),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10
-                              )
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image(
-                          image: AssetImage(controller.imageTempo),
-                          height: 20,
+                        const Image(
+                          image: AssetImage('assets/umidade.png'),
+                          height: 10,
                         ),
-                        Text('Umidade',
-                          style: GoogleFonts.nunito(
-                            color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 10
-                          )
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('${globalEstacaoModel?.main?.humidity?.toStringAsFixed(0)}',
+                              style: GoogleFonts.nunito(
+                                color: const Color.fromRGBO(62, 62, 62, 1),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
+                              )
+                            ),
+                            Text('Umidade',
+                              style: GoogleFonts.nunito(
+                                color: const Color.fromRGBO(0, 0, 0, 1),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10
+                              )
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Image(
-                          image: AssetImage(controller.imageTempo),
-                          height: 20,
-                        ),
-                        Text('Sensação térmica',
-                          style: GoogleFonts.nunito(
-                            color: const Color.fromRGBO(0, 0, 0, 1),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 10
-                          )
-                        ),
-                      ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Image(
+                            image: AssetImage('assets/pressao.png'),
+                            height: 20,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('${globalEstacaoModel?.main?.pressure?.toStringAsFixed(0)}',
+                                style: GoogleFonts.nunito(
+                                  color: const Color.fromRGBO(0, 0, 0, 1),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 15
+                                )
+                              ),
+                              Text('Pressão',
+                                style: GoogleFonts.nunito(
+                                  color: const Color.fromRGBO(0, 0, 0, 1),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 10
+                                )
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
+                  ],
+                ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       children: [
@@ -223,7 +220,8 @@ class _CardPrevTempState extends State<CardPrevTemp> {
                     ),
                   ],
                 )
-              ])
+              ]
+              )
               // TempMaxMin(
               //   condicaoTemp: inicialController.condicaoTempo,
               //   imageTempo: inicialController.tempoCond,
