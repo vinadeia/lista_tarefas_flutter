@@ -10,6 +10,7 @@ class ControllerGeral extends ChangeNotifier {
   double lat = 0.0;
   double long = 0.0;
   String error = '';
+  Color colorStatus = const Color.fromRGBO(91, 91, 91, 1);
 
   String condicaoTempo ='';
   String imageTempo = '';
