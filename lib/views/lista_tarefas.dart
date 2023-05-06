@@ -22,6 +22,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
   final TextEditingController statusController = TextEditingController();
   List<ModelTarefa> teste = [];
   late final LocalKey? key;
+  bool? statusTeste;
   
   Future<bool> _onBackPressed(){
     return showDialog(
@@ -29,7 +30,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
       builder: (context) => Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: SimpleDialog(
-          insetPadding: EdgeInsets.all(0),
+          insetPadding: const EdgeInsets.all(0),
           title: const Text('Adicionar nova tarefa.'),
           // content: const Text('Adicionar nova tarefa'),
           children: <Widget>[
@@ -44,6 +45,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                         prioridadeController: prioridadeController,
                         responsavelController: responsavelController,
                         statusController: statusController,
+                        statusTeste: statusTeste,
                         tipoController: tipoController,
                       ),
                       Row(
@@ -61,7 +63,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                   descricao: descricaoController.text,
                                   tipo: tipoController.text,
                                   responsavel: responsavelController.text, 
-                                  status: statusController.text
+                                  status: statusTeste
                                 )]);
                               });
                               Navigator.of(context).pop(false);
@@ -195,14 +197,27 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                 DataColumn(label: Text('Status')),
                                 DataColumn(label: Text('Delete')),
                               ],
-                              rows: teste.map((e) => 
+                              rows: teste.map((e) =>
                                 DataRow(
                                   cells: <DataCell>[
                                   DataCell(Text(e.prioridade.toString())),
                                   DataCell(Text(e.tipo.toString())),
                                   DataCell(Text(e.descricao.toString())),
                                   DataCell(Text(e.responsavel.toString())),
-                                  DataCell(Text(e.status.toString())),
+                                  DataCell(
+                                     SizedBox(
+                                      child: e.status == true ?
+                                        const Icon(
+                                          Icons.abc,
+                                          color: Colors.green,
+                                        ) : 
+                                        const Icon(
+                                          Icons.abc,
+                                          color: Colors.red,
+                                        )
+                                      )
+                                     
+                                  ),
                                   DataCell(
                                     IconButton(
                                       icon: Icon(Icons.delete,
@@ -210,11 +225,13 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                         size: 20,
                                       ),
                                       onPressed: (){
-                                        
+                                        setState(() {
+                                          teste.remove(e);
+                                        });
                                       },
                                     )
                                   )
-                                ],      
+                                ],    
                                 // onSelectChanged: (bool? selected) {
                                 //   selected == null ? print('selected is null') : print('select is $selected');
                                 //   },

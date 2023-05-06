@@ -1,12 +1,32 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class FormularioAddTarefa extends StatelessWidget {
+import '../controller_geral/controller_geral.dart';
+
+class FormularioAddTarefa extends StatefulWidget {
   final TextEditingController prioridadeController;
   final TextEditingController tipoController;
   final TextEditingController descricaoController;
   final TextEditingController responsavelController;
   final TextEditingController statusController;
-  const FormularioAddTarefa({super.key, required this.prioridadeController, required this.tipoController, required this.descricaoController, required this.responsavelController, required this.statusController});
+  bool? statusTeste;
+  FormularioAddTarefa({
+    Key? key,
+    required this.prioridadeController,
+    required this.tipoController,
+    required this.descricaoController,
+    required this.responsavelController,
+    required this.statusController,
+    required this.statusTeste,
+  }) : super(key: key);
+
+  @override
+  State<FormularioAddTarefa> createState() => _FormularioAddTarefaState();
+}
+
+class _FormularioAddTarefaState extends State<FormularioAddTarefa> {
+  bool? isChecked = true;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +42,7 @@ class FormularioAddTarefa extends StatelessWidget {
                     Expanded(
                       flex: 2,
                       child: TextFormField(
-                        controller: prioridadeController,
+                        controller: widget.prioridadeController,
                         decoration: const InputDecoration(
                           label: Text('Prioridade')
                         ),
@@ -32,7 +52,7 @@ class FormularioAddTarefa extends StatelessWidget {
                     Expanded(
                       flex: 4,
                       child: TextFormField(
-                        controller: tipoController,
+                        controller: widget.tipoController,
                         decoration: const InputDecoration(
                           label: Text('Tipo')
                         ),
@@ -41,7 +61,7 @@ class FormularioAddTarefa extends StatelessWidget {
                   ],
                 ),
                 TextFormField(
-                  controller: descricaoController,
+                  controller: widget.descricaoController,
                   decoration: const InputDecoration(
                     label: Text('Descrição')
                   ),
@@ -52,7 +72,7 @@ class FormularioAddTarefa extends StatelessWidget {
                     Expanded(
                       flex: 5,
                       child: TextFormField(
-                        controller: responsavelController,
+                        controller: widget.responsavelController,
                         decoration: const InputDecoration(
                           label: Text('Responsável')
                         ),
@@ -62,9 +82,21 @@ class FormularioAddTarefa extends StatelessWidget {
                     Expanded(
                       flex: 3,
                       child: TextFormField(
-                        controller: statusController,
-                        decoration: const InputDecoration(
-                          label: Text('Status')
+                        controller: widget.statusController,
+                        decoration: InputDecoration(
+                          prefixIcon: Checkbox(
+                            value: widget.statusTeste ?? true,
+                            onChanged: (val){
+                              setState(() {
+                                widget.statusTeste = val;
+                              });
+                              print(widget.statusTeste);
+                              // if (isChecked == true) {
+                              //   controller.colorStatus = Colors.green;
+                              // } else {
+                              //   controller.colorStatus = Colors.red;
+                              // }
+                            }),
                         ),
                       ),
                     ),

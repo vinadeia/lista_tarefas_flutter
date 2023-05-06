@@ -3,7 +3,7 @@ class ModelTarefa {
   String? descricao;
   String? tipo;
   String? responsavel;
-  String? status;
+  bool? status;
 
 
   ModelTarefa({
