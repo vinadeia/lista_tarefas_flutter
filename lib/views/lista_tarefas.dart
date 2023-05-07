@@ -48,29 +48,53 @@ class _ListaTarefasState extends State<ListaTarefas> {
                         statusTeste: statusTeste,
                         tipoController: tipoController,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton( 
-                            onPressed: () => Navigator.of(context).pop(false), 
-                            child: const Text('Cancelar'), 
-                          ),
-                          ElevatedButton( 
-                            onPressed: () {
-                              setState(() {
-                                teste.addAll([ModelTarefa(
-                                  prioridade: prioridadeController.text,
-                                  descricao: descricaoController.text,
-                                  tipo: tipoController.text,
-                                  responsavel: responsavelController.text, 
-                                  status: statusTeste
-                                )]);
-                              });
-                              Navigator.of(context).pop(false);
-                            },
-                            child: const Text('Salvar'), 
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 200,
+                              height: 40,
+                              child: ElevatedButton( 
+                                onPressed: (){
+                                  Navigator.of(context).pop(false);       
+                                  prioridadeController.clear();
+                                  tipoController.clear();
+                                  descricaoController.clear();
+                                  responsavelController.clear();
+                                  statusController.clear();
+                                }, 
+                                child: const Text('Cancelar'), 
+                              ),
+                            ),
+                            SizedBox(
+                              width: 200,
+                              height: 40,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    teste.addAll([ModelTarefa(
+                                      prioridade: prioridadeController.text,
+                                      descricao: descricaoController.text,
+                                      tipo: tipoController.text,
+                                      responsavel: responsavelController.text, 
+                                      status: statusTeste
+                                    )]);
+                                  });
+                                  Navigator.of(context).pop(false);
+                                  prioridadeController.clear();
+                                  tipoController.clear();
+                                  descricaoController.clear();
+                                  responsavelController.clear();
+                                  statusController.clear();
+                                },
+                                child: const Text('Salvar'), 
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                   ]
                 )
@@ -111,54 +135,52 @@ class _ListaTarefasState extends State<ListaTarefas> {
                               fontSize: 25
                             ),
                           ),
-                          Center(
-                            child: Wrap(
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              children:[
-                                Card(
-                                  child: SizedBox(
-                                    width: 150,
-                                    height: 50,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        children: const [
-                                          Text('CONCLUIDAS'),
-                                        ],
-                                      ),
+                          Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            children:[
+                              Card(
+                                child: SizedBox(
+                                  width: 150,
+                                  height: 50,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: const [
+                                        Text('CONCLUIDAS'),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                Card(
-                                  child: SizedBox(
-                                    width: 150,
-                                    height: 50,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        children: const [
-                                          Text('CANCELADAS'),
-                                        ],
-                                      ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: 150,
+                                  height: 50,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: const [
+                                        Text('CANCELADAS'),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                Card(
-                                  child: SizedBox(
-                                    width: 150,
-                                    height: 50,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        children: const [
-                                          Text('ABERTAS'),
-                                        ],
-                                      ),
+                              ),
+                              Card(
+                                child: SizedBox(
+                                  width: 150,
+                                  height: 50,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: const [
+                                        Text('ABERTAS'),
+                                      ],
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,

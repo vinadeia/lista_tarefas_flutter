@@ -21,6 +21,15 @@ class ThemeApp {
     listTileTheme: const ListTileThemeData(
       textColor: Colors.white,
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      contentPadding: EdgeInsets.only(left: 10, right: 10),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 1.0
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(5))
+      )
+    ),
     cardTheme:const CardTheme(
       margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
       color: Color.fromARGB(255, 255, 255, 255),
