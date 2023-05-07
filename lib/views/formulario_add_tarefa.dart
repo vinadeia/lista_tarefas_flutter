@@ -41,62 +41,77 @@ class _FormularioAddTarefaState extends State<FormularioAddTarefa> {
                   children: [
                     Expanded(
                       flex: 2,
-                      child: TextFormField(
-                        controller: widget.prioridadeController,
-                        decoration: const InputDecoration(
-                          label: Text('Prioridade')
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: TextFormField(
+                          controller: widget.prioridadeController,
+                          decoration: const InputDecoration(
+                            label: Text('Prioridade')
+                          ),
+                          // onFieldSubmitted: (){},
                         ),
-                        // onFieldSubmitted: (){},
                       ),
                     ),
                     Expanded(
                       flex: 4,
-                      child: TextFormField(
-                        controller: widget.tipoController,
-                        decoration: const InputDecoration(
-                          label: Text('Tipo')
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: TextFormField(
+                          controller: widget.tipoController,
+                          decoration: const InputDecoration(
+                            label: Text('Tipo')
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                TextFormField(
-                  controller: widget.descricaoController,
-                  decoration: const InputDecoration(
-                    label: Text('Descrição')
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: TextFormField(
+                    controller: widget.descricaoController,
+                    decoration: const InputDecoration(
+                      label: Text('Descrição')
+                    ),
+                    // onFieldSubmitted: (){},
                   ),
-                  // onFieldSubmitted: (){},
                 ),
                 Row(
                   children: [
                     Expanded(
-                      flex: 5,
-                      child: TextFormField(
-                        controller: widget.responsavelController,
-                        decoration: const InputDecoration(
-                          label: Text('Responsável')
+                      flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: TextFormField(
+                          controller: widget.responsavelController,
+                          decoration: const InputDecoration(
+                            label: Text('Responsável')
+                          ),
+                          // onFieldSubmitted: (){},
                         ),
-                        // onFieldSubmitted: (){},
                       ),
                     ),
                     Expanded(
                       flex: 3,
-                      child: TextFormField(
-                        controller: widget.statusController,
-                        decoration: InputDecoration(
-                          prefixIcon: Checkbox(
-                            value: widget.statusTeste ?? true,
-                            onChanged: (val){
-                              setState(() {
-                                widget.statusTeste = val;
-                              });
-                              print(widget.statusTeste);
-                              // if (isChecked == true) {
-                              //   controller.colorStatus = Colors.green;
-                              // } else {
-                              //   controller.colorStatus = Colors.red;
-                              // }
-                            }),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: TextFormField(
+                          controller: widget.statusController,
+                          decoration: InputDecoration(
+                            prefixIcon: Checkbox(
+                              value: widget.statusTeste ?? true,
+                              onChanged: (val){
+                                setState(() {
+                                  widget.statusTeste = val;
+                                });
+                                print(widget.statusTeste);
+                                // if (isChecked == true) {
+                                //   controller.colorStatus = Colors.green;
+                                // } else {
+                                //   controller.colorStatus = Colors.red;
+                                // }
+                              }),
+                          ),
                         ),
                       ),
                     ),
