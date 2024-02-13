@@ -1,16 +1,22 @@
-# app_test_flutter
+# App de Acessórios diário
 
-A new Flutter project.
+Aplicação criada em Flutter, <br>
+com o propósido de estudo do framework.<br>
+A princípio ele irá conter: <br>
+ - Lista de Tarefas com ordenação de prioridades, exclusão e edição.<br>
+ - Pomodoro.<br>
+ - Agenda com compromissos mensais, que deve notificar mesmo com o app fechado.<br>
+ - Carregamento de dados offline.<br>
+ - No Dashboard, ao logar e permitir acesso a localização do Dispositivo trazer dados meteorológicos.<br>
 
-## Getting Started
+## Para iniciar a aplicação.
 
-This project is a starting point for a Flutter application.
+Antes de clonar a aplicação, certifique-se de ter instalado o flutter na versão correta.<br>
+Rode o comando "flutter doctor" no prompt de comando e verifique se está tudo ok.<br>
 
-A few resources to get you started if this is your first Flutter project:
+<img src="img/flutter_doctor.png" width="250">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Clonar o repositório<br>
+Abrir no vsCode e rodar no terminal o comando "flutter run", dentro da pasta do projeto.<br>
+Ao clonar, pode acontecer de o projeto dar erro. Nesse caso limpe os pacotes com "flutter clean" e em seguida os recupere com "flutter pub get". <br>
+Após isso a aplicação deve rodar sem problemas. =)
