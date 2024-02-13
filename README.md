@@ -14,7 +14,7 @@ A princípio ele irá conter: <br>
 Antes de clonar a aplicação, certifique-se de ter instalado o flutter na versão correta.<br>
 Rode o comando "flutter doctor" no prompt de comando e verifique se está tudo ok.<br>
 
-<img src="img/flutter_doctor.png" width="250">
+<img src="img/flutter_doctor.png" width="700">
 
 Clonar o repositório<br>
 Abrir no vsCode e rodar no terminal o comando "flutter run", dentro da pasta do projeto.<br>
