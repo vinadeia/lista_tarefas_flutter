@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../components/model_tarefa.dart';
-
+//teste commit git
 class ControllerGeral extends ChangeNotifier {
   double lat = 0.0;
   double long = 0.0;
