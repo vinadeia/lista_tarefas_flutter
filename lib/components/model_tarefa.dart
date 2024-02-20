@@ -4,6 +4,7 @@ class ModelTarefa {
   String? tipo;
   String? responsavel;
   bool? status;
+  bool valueCheck = false;
 
 
   ModelTarefa({
@@ -11,7 +12,8 @@ class ModelTarefa {
     this.descricao,
     this.tipo,
     this.responsavel,
-    this.status
+    this.status,
+    required this.valueCheck
   });
 }
 

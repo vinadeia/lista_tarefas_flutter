@@ -19,10 +19,6 @@ class ControllerGeral extends ChangeNotifier {
   final modelListaTarefas = ListaTarefasModel();
   List<ModelTarefa> teste = [];
 
-  ControllerGeral(){
-     getPosicao();
-  }
-
   getPosicao() async {
     
     final Map<String, String> data = {
@@ -34,7 +30,10 @@ class ControllerGeral extends ChangeNotifier {
         Position posicao = await _posicaoAtual();
         lat = posicao.latitude;
         long = posicao.longitude;
-        
+       if(posicao.altitude == 0.0 || posicao.longitude == 0.0){
+        lat = -30.0277;
+        long = -51.2287;
+       } 
       
       } else if(defaultTargetPlatform == TargetPlatform.windows){
         Position posicao = await _determinePosition();
