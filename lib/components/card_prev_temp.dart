@@ -2,7 +2,6 @@ import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -29,9 +28,13 @@ class _CardPrevTempState extends State<CardPrevTemp> {
     // if(globalEstacaoModel != null){
     //   controller.alteraCondicaoTempo(globalEstacaoModel?.weather?[0].main);
     // }
-    return Container(
+    return
+      Container(
           color: Colors.white,
-          child: Row(
+          child: 
+          globalEstacaoModel == null ?
+          Text('Previsão do tempo indisponível') :
+          Row(
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
