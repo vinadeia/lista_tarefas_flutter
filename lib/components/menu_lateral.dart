@@ -1,4 +1,5 @@
 import 'package:app_test_flutter/agenda/view/agenda.dart';
+import 'package:app_test_flutter/pomodoro/pomodoro.dart';
 import 'package:app_test_flutter/views/lista_tarefas.dart';
 import 'package:app_test_flutter/views/graficos.dart';
 import 'package:app_test_flutter/views/dashboard.dart';
@@ -73,6 +74,19 @@ class MenuLateral extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => const Agenda(),
+              )
+            )
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.woo_commerce,
+              color: Colors.orange,  
+            ),
+            title: const Text('Pomodoro'),
+            onTap: () =>  
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const PomodoroView(),
               )
             )
           ),
