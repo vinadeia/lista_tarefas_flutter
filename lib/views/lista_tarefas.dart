@@ -80,7 +80,8 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                       descricao: descricaoController.text,
                                       tipo: tipoController.text,
                                       responsavel: responsavelController.text, 
-                                      status: statusTeste
+                                      status: statusTeste,
+                                      valueCheck: false
                                     )]);
                                   });
                                   Navigator.of(context).pop(false);
@@ -135,7 +136,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                               fontSize: 25
                             ),
                           ),
-                          Wrap(
+                          const Wrap(
                             crossAxisAlignment: WrapCrossAlignment.start,
                             children:[
                               Card(
@@ -143,9 +144,9 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                   width: 150,
                                   height: 50,
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Column(
-                                      children: const [
+                                      children: [
                                         Text('CONCLUIDAS'),
                                       ],
                                     ),
@@ -157,9 +158,9 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                   width: 150,
                                   height: 50,
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Column(
-                                      children: const [
+                                      children: [
                                         Text('CANCELADAS'),
                                       ],
                                     ),
@@ -171,9 +172,9 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                   width: 150,
                                   height: 50,
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Column(
-                                      children: const [
+                                      children: [
                                         Text('ABERTAS'),
                                       ],
                                     ),
@@ -187,10 +188,10 @@ class _ListaTarefasState extends State<ListaTarefas> {
                             children: [
                               ElevatedButton(
                                 onPressed: _onBackPressed,
-                                child: Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: const [
+                                  children: [
                                     Icon(Icons.add),
                                     Text("Adicionar Tarefa")
                                   ],
@@ -212,6 +213,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                             DataTable(
                               // showCheckboxColumn: true,
                               columns: const [
+                                DataColumn(label: Text('Select')),
                                 DataColumn(label: Text('Prioridade')),
                                 DataColumn(label: Text('Tipo')),
                                 DataColumn(label: Text('Descrição')),
@@ -222,6 +224,15 @@ class _ListaTarefasState extends State<ListaTarefas> {
                               rows: teste.map((e) =>
                                 DataRow(
                                   cells: <DataCell>[
+                                  DataCell(Checkbox(
+                                    value: e.valueCheck,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        e.valueCheck = !e.valueCheck;
+                                        print(e.descricao);
+                                      });
+                                    },
+                                  )),
                                   DataCell(Text(e.prioridade.toString())),
                                   DataCell(Text(e.tipo.toString())),
                                   DataCell(Text(e.descricao.toString())),

@@ -90,6 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(right: 20, left: 20, top: 80, bottom: 100),
                         child: ElevatedButton(
                           onPressed: ()async{
+                            controller.getPosicao();
                             if(formKey.currentState!.validate()){
                                 Navigator.push(context, MaterialPageRoute(
                                   builder: (context) => const Dashboard()
@@ -97,9 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                               );
                             }
                           },
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Icon(Icons.check),
                               Padding(
                                 padding: EdgeInsets.all(16.0),
