@@ -1,5 +1,6 @@
 
 import 'package:app_test_flutter/components/menu_lateral.dart';
+import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:flutter/material.dart';
 
 //  Exemplo com controller************************
@@ -32,7 +33,8 @@ import 'package:flutter/material.dart';
 
 
  class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final ControllerGeral controllerGeral;
+  const HomePage({super.key, required this.controllerGeral});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -61,7 +63,9 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           // title: const Text(""),
         ),
-        drawer: const MenuLateral(),
+        drawer: MenuLateral(
+          controller: widget.controllerGeral,
+        ),
         body: const Center(
           child: Text('Dashboard')
         ),

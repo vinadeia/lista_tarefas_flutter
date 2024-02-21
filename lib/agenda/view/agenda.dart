@@ -1,3 +1,4 @@
+import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -7,7 +8,8 @@ import '../components/avisos_agenda.dart';
 import '../components/barra_metas_agenda.dart';
 
 class Agenda extends StatefulWidget {
-  const Agenda({super.key});
+  final ControllerGeral controllerGeral;
+  const Agenda({super.key, required this.controllerGeral});
 
   @override
   State<Agenda> createState() => _AgendaState();
@@ -26,7 +28,9 @@ class _AgendaState extends State<Agenda> {
         appBar: AppBar(
           // title: const Text(""),
         ),
-        drawer: const MenuLateral(),
+        drawer: MenuLateral(
+          controller: widget.controllerGeral,
+        ),
         body: SingleChildScrollView(
           child: SizedBox(
             height: MediaQuery.of(context).size.height,

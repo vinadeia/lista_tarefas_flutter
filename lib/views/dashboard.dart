@@ -7,7 +7,8 @@ import '../components/card_prev_temp.dart';
 import '../components/menu_lateral.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  final ControllerGeral controllerGeral;
+  const Dashboard({super.key, required this.controllerGeral});
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -23,7 +24,9 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           // title: const Text(""),
         ),
-        drawer: const MenuLateral(),
+        drawer: MenuLateral(
+          controller: widget.controllerGeral,
+        ),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.only(left: 30, right: 30),

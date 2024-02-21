@@ -1,4 +1,5 @@
 import 'package:app_test_flutter/agenda/view/agenda.dart';
+import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:app_test_flutter/pomodoro/pomodoro.dart';
 import 'package:app_test_flutter/views/lista_tarefas.dart';
 import 'package:app_test_flutter/views/graficos.dart';
@@ -6,7 +7,9 @@ import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class MenuLateral extends StatelessWidget {
-  const MenuLateral({super.key});
+  final ControllerGeral controller;
+  
+  const MenuLateral({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,9 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const Dashboard(),
+                builder: (context) => Dashboard(
+                  controllerGeral: controller,
+                ),
               )
             )
           ),
@@ -50,7 +55,9 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => ListaTarefas(),
+                builder: (context) => ListaTarefas(
+                  controller: controller,
+                ),
               )
             )
           ),
@@ -60,7 +67,9 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const Graficos(),
+                builder: (context) => Graficos(
+                  controllerGeral: controller,
+                ),
               )
             )
           ),
@@ -73,7 +82,9 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const Agenda(),
+                builder: (context) => Agenda(
+                  controllerGeral: controller,
+                ),
               )
             )
           ),
@@ -86,7 +97,9 @@ class MenuLateral extends StatelessWidget {
             onTap: () =>  
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const PomodoroView(),
+                builder: (context) => PomodoroView(
+                  controller: controller,
+                ),
               )
             )
           ),

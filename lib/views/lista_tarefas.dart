@@ -8,7 +8,8 @@ import '../components/model_tarefa.dart';
 import 'formulario_add_tarefa.dart';
 
 class ListaTarefas extends StatefulWidget {
-  const ListaTarefas({super.key});
+  ControllerGeral controller;
+  ListaTarefas({super.key, required this.controller});
 
   @override
   State<ListaTarefas> createState() => _ListaTarefasState();
@@ -20,7 +21,6 @@ class _ListaTarefasState extends State<ListaTarefas> {
   final TextEditingController descricaoController = TextEditingController();
   final TextEditingController responsavelController = TextEditingController();
   final TextEditingController statusController = TextEditingController();
-  List<ModelTarefa> teste = [];
   late final LocalKey? key;
   bool? statusTeste;
   
@@ -74,15 +74,18 @@ class _ListaTarefasState extends State<ListaTarefas> {
                               height: 40,
                               child: ElevatedButton(
                                 onPressed: () {
+                                  
                                   setState(() {
-                                    teste.addAll([ModelTarefa(
-                                      prioridade: prioridadeController.text,
-                                      descricao: descricaoController.text,
-                                      tipo: tipoController.text,
-                                      responsavel: responsavelController.text, 
-                                      status: statusTeste,
-                                      valueCheck: false
-                                    )]);
+                                    widget.controller.listaDeTarefas.addAll([
+                                      ModelTarefa(
+                                        prioridade: prioridadeController.text,
+                                        descricao: descricaoController.text,
+                                        tipo: tipoController.text,
+                                        responsavel: responsavelController.text, 
+                                        status: statusTeste,
+                                        valueCheck: false
+                                      )
+                                    ]);
                                   });
                                   Navigator.of(context).pop(false);
                                   prioridadeController.clear();
@@ -109,13 +112,12 @@ class _ListaTarefasState extends State<ListaTarefas> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<ControllerGeral>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           // title: const Text(""),
         ),
-        drawer: const MenuLateral(),
+        drawer: MenuLateral( controller: widget.controller),
         body: SingleChildScrollView(
           child: SizedBox(
             child: Padding(
@@ -221,7 +223,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                 DataColumn(label: Text('Status')),
                                 DataColumn(label: Text('Delete')),
                               ],
-                              rows: teste.map((e) =>
+                              rows: widget.controller.listaDeTarefas.map((e) =>
                                 DataRow(
                                   cells: <DataCell>[
                                   DataCell(Checkbox(
@@ -259,7 +261,7 @@ class _ListaTarefasState extends State<ListaTarefas> {
                                       ),
                                       onPressed: (){
                                         setState(() {
-                                          teste.remove(e);
+                                          widget.controller.listaDeTarefas.remove(e);
                                         });
                                       },
                                     )
