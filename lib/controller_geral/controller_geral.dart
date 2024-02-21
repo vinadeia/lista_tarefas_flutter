@@ -17,7 +17,7 @@ class ControllerGeral extends ChangeNotifier {
   final ClientHttp requisicao = ClientHttp();
   
   final modelListaTarefas = ListaTarefasModel();
-  List<ModelTarefa> teste = [];
+  List<ModelTarefa> listaDeTarefas = [];
 
   getPosicao() async {
     

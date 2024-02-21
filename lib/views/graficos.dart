@@ -1,8 +1,10 @@
+import 'package:app_test_flutter/controller_geral/controller_geral.dart';
 import 'package:flutter/material.dart';
 import '../components/menu_lateral.dart';
 
 class Graficos extends StatelessWidget {
-  const Graficos({super.key});
+  final ControllerGeral controllerGeral;
+  const Graficos({super.key, required this.controllerGeral});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,9 @@ class Graficos extends StatelessWidget {
         appBar: AppBar(
           // title: const Text(""),
         ),
-        drawer: const MenuLateral(),
+        drawer: MenuLateral(
+          controller: controllerGeral,
+        ),
         body: const Center(
           child: Text('Gráficos')
         ),

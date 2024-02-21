@@ -3,6 +3,8 @@ class ModelTarefa {
   String? descricao;
   String? tipo;
   String? responsavel;
+  String? titulo;
+  String? tempoDeterminado;
   bool? status;
   bool valueCheck = false;
 
@@ -12,6 +14,8 @@ class ModelTarefa {
     this.descricao,
     this.tipo,
     this.responsavel,
+    this.titulo,
+    this.tempoDeterminado,
     this.status,
     required this.valueCheck
   });
