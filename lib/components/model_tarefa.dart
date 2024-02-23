@@ -17,10 +17,6 @@ class ModelTarefa {
     this.titulo,
     this.tempoDeterminado,
     this.status,
-    required this.valueCheck
+    required this.valueCheck,
   });
-}
-
-class ListaTarefasModel {
-  List<ModelTarefa> listaTarefas = [];
 }

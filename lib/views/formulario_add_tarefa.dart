@@ -1,24 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../controller_geral/controller_geral.dart';
 
 class FormularioAddTarefa extends StatefulWidget {
-  final TextEditingController prioridadeController;
-  final TextEditingController tipoController;
-  final TextEditingController descricaoController;
-  final TextEditingController responsavelController;
-  final TextEditingController statusController;
-  bool? statusTeste;
-  FormularioAddTarefa({
-    Key? key,
-    required this.prioridadeController,
-    required this.tipoController,
-    required this.descricaoController,
-    required this.responsavelController,
-    required this.statusController,
-    required this.statusTeste,
+  final ControllerGeral controller;
+  
+  const FormularioAddTarefa({
+    Key? key, required this.controller,
   }) : super(key: key);
 
   @override
@@ -26,7 +15,7 @@ class FormularioAddTarefa extends StatefulWidget {
 }
 
 class _FormularioAddTarefaState extends State<FormularioAddTarefa> {
-  bool? isChecked = true;
+  bool isChecked = true;
 
   @override
   Widget build(BuildContext context) {
@@ -37,41 +26,12 @@ class _FormularioAddTarefaState extends State<FormularioAddTarefa> {
             // key: formKey,
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: TextFormField(
-                          controller: widget.prioridadeController,
-                          decoration: const InputDecoration(
-                            label: Text('Prioridade')
-                          ),
-                          // onFieldSubmitted: (){},
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: TextFormField(
-                          controller: widget.tipoController,
-                          decoration: const InputDecoration(
-                            label: Text('Tipo')
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: TextFormField(
-                    controller: widget.descricaoController,
+                    controller: widget.controller.tituloController,
                     decoration: const InputDecoration(
-                      label: Text('Descrição')
+                      label: Text('Titulo')
                     ),
                     // onFieldSubmitted: (){},
                   ),
@@ -82,8 +42,64 @@ class _FormularioAddTarefaState extends State<FormularioAddTarefa> {
                       flex: 4,
                       child: Padding(
                         padding: const EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            Row(
+                              children: [
+                                Checkbox(
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isChecked = !isChecked;
+                                      widget.controller.tipoController.text = 'p';
+                                    });
+                                  },
+                                ),
+                                Text('Pessoal'),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Checkbox(
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isChecked = !isChecked;
+                                      widget.controller.tipoController.text = 'p';
+                                    });
+                                  },
+                                ),
+                                Text('Casa'),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Checkbox(
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isChecked = !isChecked;
+                                      widget.controller.tipoController.text = 'p';
+                                    });
+                                  },
+                                ),
+                                Text('Extra'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
                         child: TextFormField(
-                          controller: widget.responsavelController,
+                          controller: widget.controller.responsavelController,
                           decoration: const InputDecoration(
                             label: Text('Responsável')
                           ),
@@ -92,26 +108,15 @@ class _FormularioAddTarefaState extends State<FormularioAddTarefa> {
                       ),
                     ),
                     Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: TextFormField(
-                          controller: widget.statusController,
-                          decoration: InputDecoration(
-                            prefixIcon: Checkbox(
-                              value: widget.statusTeste ?? true,
-                              onChanged: (val){
-                                setState(() {
-                                  widget.statusTeste = val;
-                                });
-                                print(widget.statusTeste);
-                                // if (isChecked == true) {
-                                //   controller.colorStatus = Colors.green;
-                                // } else {
-                                //   controller.colorStatus = Colors.red;
-                                // }
-                              }),
+                          controller: widget.controller.tempoController,
+                          decoration: const InputDecoration(
+                            label: Text('Tempo estimado')
                           ),
+                          // onFieldSubmitted: (){},
                         ),
                       ),
                     ),

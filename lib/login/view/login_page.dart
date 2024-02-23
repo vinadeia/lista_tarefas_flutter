@@ -1,9 +1,9 @@
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:app_test_flutter/views/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller_geral/controller_geral.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

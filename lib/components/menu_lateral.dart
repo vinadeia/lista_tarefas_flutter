@@ -1,5 +1,5 @@
 import 'package:app_test_flutter/agenda/view/agenda.dart';
-import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:app_test_flutter/pomodoro/pomodoro.dart';
 import 'package:app_test_flutter/views/lista_tarefas.dart';
 import 'package:app_test_flutter/views/graficos.dart';

@@ -1,4 +1,4 @@
-import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:app_test_flutter/style/theme_app.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +8,6 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   ThemeApp theme = ThemeApp();
-  ControllerGeral controller = ControllerGeral();
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

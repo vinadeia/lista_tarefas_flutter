@@ -1,5 +1,5 @@
 import 'package:app_test_flutter/components/menu_lateral.dart';
-import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:flutter/material.dart';
 
 class InputList extends StatefulWidget {
