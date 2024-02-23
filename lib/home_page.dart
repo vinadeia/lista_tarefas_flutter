@@ -1,37 +1,7 @@
 
 import 'package:app_test_flutter/components/menu_lateral.dart';
-import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:flutter/material.dart';
-
-//  Exemplo com controller************************
-
-// class HomePage extends StatelessWidget {
-//   const HomePage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     var controller = HomeController.of(context);
-
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text("Home Page"),
-//       ),
-//       body: Center(
-//         child: Text('teste ${controller.value}')
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         child: const Icon(Icons.add),
-//         onPressed: () {
-          
-//           controller.increment();
-//         }
-//       ),
-//     );
-//   }
-// }
-
-
  class HomePage extends StatefulWidget {
   final ControllerGeral controllerGeral;
   const HomePage({super.key, required this.controllerGeral});

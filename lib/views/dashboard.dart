@@ -1,4 +1,4 @@
-import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:app_test_flutter/model/model_estacao_meteorologica.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +18,6 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<ControllerGeral>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -49,8 +48,10 @@ class _DashboardState extends State<Dashboard> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        CardPrevTemp()
+                      children: [
+                        CardPrevTemp(
+                          // controller: widget.controllerGeral,
+                        )
                       ],
                     ),
                   ),

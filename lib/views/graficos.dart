@@ -1,4 +1,4 @@
-import 'package:app_test_flutter/controller_geral/controller_geral.dart';
+import 'package:app_test_flutter/controller_geral.dart';
 import 'package:flutter/material.dart';
 import '../components/menu_lateral.dart';
 
